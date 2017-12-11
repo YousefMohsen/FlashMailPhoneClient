@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 21028,
-  "expoServerNgrokUrl": "https://ca-m84.yousefmohsen.lektappphoneclient.exp.direct",
-  "packagerNgrokUrl": "https://packager.ca-m84.yousefmohsen.lektappphoneclient.exp.direct",
-  "ngrokPid": 20864
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

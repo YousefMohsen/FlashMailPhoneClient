@@ -23,11 +23,11 @@ export default class MessageList extends React.Component {
   componentDidMount() {
       this.setState({messageList: this.props.messageList})
   }
-  handleRefresh(){
-    this.setState({refreshing: true},
-    async ()=>{
+  handleRefresh = async()=>{
+    this.setState({refreshing: true})
     let messageList = await this.props.onRefresh();   
-    this.setState({refreshing: false, messageList: messageList})})
+
+    this.setState({refreshing: false, messageList: messageList})
   
   }
   

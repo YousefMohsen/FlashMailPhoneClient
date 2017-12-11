@@ -42,7 +42,7 @@ export default class MessageItem extends React.Component {
             </Left>
             <Body>
               <Text>{message.sender.name}</Text>
-              <Text note>{this.sliceMessage(message.msg)}</Text>
+              <Text note numberOfLines={2}>{this.sliceMessage(message.msg)}</Text>
             </Body>
             <Right>
               <Text note>{this.formatDate(message.dateSent)}</Text>
