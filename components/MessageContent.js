@@ -1,5 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Button, Text, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
+import { View, Dimensions, AsyncStorage, StyleSheet, Image } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
+
 import RequestHandler from '../data/RequestHandler'
 import Colors from '../styles/Colors'
 
@@ -18,18 +20,56 @@ export default class MessageContent extends React.Component {
   componentDidMount() {
   }
 
+  formatDate(date){
+    return  date.slice(3,10)+"  "+date.slice(11,16);
+}
+
+
 
   render() {
 let message = this.props.message;
 console.log("from message content",message)
 
     return (
-      <View style={styles.container}>
-       
+     
+      <Container >
+      <Header>
+      <Left>
+      <Button iconLeft light onPress={()=>this.props.goBack()}>
+      <Icon name='arrow-back' />
+      <Text>Back</Text>
 
-          <Text style={styles.loginButton}>Log ind</Text>
-          <Button title="back" onPress={()=>this.props.goBack()}/>
-      </View>
+    </Button>
+    </Left>
+      </Header>
+      <Content >
+        <Card  style={{flex: 1}}>
+   
+          <CardItem >
+            <Body >
+            <Text style={styles.title}>{message.title}</Text>
+              <Text style={styles.messageContent}>
+                 {message.msg}
+              </Text>
+             
+            </Body>
+          </CardItem>
+
+          <CardItem>
+          <Left>
+            <Thumbnail source={{uri: message.sender.imgUrl}} />
+            <Body>
+              <Text >{message.sender.name}</Text>
+              
+              <Text note>{this.formatDate(message.dateSent)}</Text>
+    
+            </Body>
+          </Left>
+        </CardItem>
+
+        </Card>
+      </Content>
+    </Container>         
     );
   }
 }
@@ -39,43 +79,33 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.primaryColor,
-    justifyContent: 'center',
-    alignItems: 'center',
+
   },
-  textFieldShort: {
-    borderBottomWidth: 1,
-    borderColor: Colors.secondaryColor,
+  messageContent: {
     padding: 5,
-    marginBottom: 2,
+    paddingBottom:2,
     color: Colors.secondaryColor,
     fontSize: 18,
-    width: '80%'
-
-
+    
 
   },
-  loginButton: {
+  title: {
+    fontWeight: 'bold',
     textAlign: 'center',
-    fontSize: 18,
-    color: 'white',
+    
+    fontSize: 25,
+    paddingTop: 15,
+    paddingBottom: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.secondaryColor,
+    color: Colors.focusedColor,
+    
 
     
     
   },
 
-  btnWrapper:{
-    marginRight:40,
-    marginLeft:40,
-    marginTop:30,
-    paddingTop:20,
-    paddingBottom:20,
-    backgroundColor: Colors.secondaryColor,
-    borderRadius:10,
-    borderWidth: 1,
-    width: '70%'
-    
-  }
- 
+
 
 
 

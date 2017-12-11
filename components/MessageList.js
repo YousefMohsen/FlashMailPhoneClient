@@ -1,5 +1,6 @@
 import React from 'react';
-import { ScrollView, StyleSheet, FlatList, View, Button, Text, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
+import { ScrollView, StyleSheet, Text, FlatList, View, Button, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
+import {Header }  from 'native-base';
 import RequestHandler from '../data/RequestHandler'
 import Colors from '../styles/Colors'
 import MessageItem from './MessageItem'
@@ -37,11 +38,14 @@ export default class MessageList extends React.Component {
     return (
       <View style={styles.container}>
        
-
+      <Header>
+      <Text style={styles.header}>Inbox</Text>
+      </Header>
       <FlatList
       data={this.state.messageList}
       renderItem={({item}) => <MessageItem message={item} onPress={this.props.onItemPress} />}
       keyExtractor={(item, index)=>index}
+      style={{flex:1}}
      // refreshing={this.state.refreshing}
       //onRefresh={this.handleRefresh}
     />
@@ -57,8 +61,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.primaryColor,
     justifyContent: 'center',
-    padding: 2,
-    paddingTop: 20
     
 
   },
@@ -74,10 +76,10 @@ const styles = StyleSheet.create({
 
 
   },
-  loginButton: {
-    textAlign: 'center',
+  header: {
     fontSize: 18,
-    color: 'white',
+    color: Colors.secondaryColor,
+    paddingTop:20
 
     
     

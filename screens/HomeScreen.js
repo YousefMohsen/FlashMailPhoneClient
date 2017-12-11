@@ -66,9 +66,7 @@ export default class HomeScreen extends React.Component {
 
     if(this.state.currentMessage){
     return (
-      <View style={styles.container}>
         <MessageContent message={this.state.currentMessage} goBack={this.resetCurrentMessage} />
-      </View>
 
     );
     
