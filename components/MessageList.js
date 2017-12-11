@@ -1,34 +1,51 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Button, Text, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
+import { ScrollView, StyleSheet, FlatList, View, Button, Text, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
 import RequestHandler from '../data/RequestHandler'
 import Colors from '../styles/Colors'
+import MessageItem from './MessageItem'
 
-export default class MessageContent extends React.Component {
+export default class MessageList extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-
-
+        messageList: [],
+        refreshing: false
+    
     }
 
-  }
+    this.handleRefresh = this.handleRefresh.bind(this);
+    
+}
 
   componentDidMount() {
+      this.setState({messageList: this.props.mesgList})
   }
-
+  handleRefresh(){
+    this.setState({refreshing: true},
+    async ()=>{
+    await this.props.updateList();   
+    this.setState({refreshing: false})})
+  
+  }
+  
 
   render() {
-let message = this.props.message;
-console.log("from message content",message)
+
 
     return (
       <View style={styles.container}>
        
 
-          <Text style={styles.loginButton}>Log ind</Text>
-          <Button title="back" onPress={()=>this.props.goBack()}/>
+      <FlatList
+      data={this.state.messageList}
+      renderItem={({item}) => <MessageItem message={item} onPress={this.props.onItemPress} />}
+      keyExtractor={(item, index)=>index}
+     // refreshing={this.state.refreshing}
+      //onRefresh={this.handleRefresh}
+    />
+
       </View>
     );
   }
@@ -40,7 +57,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.primaryColor,
     justifyContent: 'center',
-    alignItems: 'center',
+    padding: 2,
+    paddingTop: 20
+    
+
   },
   textFieldShort: {
     borderBottomWidth: 1,

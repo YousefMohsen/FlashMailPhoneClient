@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, StyleSheet, View, Button, Text, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import RequestHandler from '../data/RequestHandler'
-
+import Colors from '../styles/Colors'
 
 export default class LoginForm extends React.Component {
 
@@ -81,22 +81,19 @@ console.log(er)
 }
 
 
-const primaryColor = '#FFE0B2'
-const secondaryColor = '#5D4037'
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: primaryColor,
+    backgroundColor: Colors.primaryColor,
     justifyContent: 'center',
     alignItems: 'center',
   },
   textFieldShort: {
     borderBottomWidth: 1,
-    borderColor: secondaryColor,
+    borderColor: Colors.secondaryColor,
     padding: 5,
     marginBottom: 2,
-    color: secondaryColor,
+    color: Colors.secondaryColor,
     fontSize: 18,
     width: '80%'
 
@@ -118,7 +115,7 @@ const styles = StyleSheet.create({
     marginTop:30,
     paddingTop:20,
     paddingBottom:20,
-    backgroundColor: secondaryColor,
+    backgroundColor: Colors.secondaryColor,
     borderRadius:10,
     borderWidth: 1,
     width: '70%'

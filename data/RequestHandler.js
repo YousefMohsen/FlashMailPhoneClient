@@ -35,6 +35,24 @@ const api = "https://e3055ad6.ngrok.io"
     
     }
 
+    fetchMessages = async(mail,timestamp)=>{//returns axios promise. 
+
+        if(!timestamp){timestamp=0}
+
+        let endpoint = api+'/msg/'+"/"+mail+"/"+timestamp;
+        console.log(endpoint)
+       try{
+
+        let response = await axios.get(endpoint);
+        return response.data;
+       }catch(error){
+           console.log("ERROR", error)
+        return null;
+       }
+    
+     
+    
+    }
 
 
 
