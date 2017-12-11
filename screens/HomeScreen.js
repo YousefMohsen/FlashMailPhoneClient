@@ -25,8 +25,6 @@ export default class HomeScreen extends React.Component {
     this.state = {
       messageList: [],
       currentMessage: null,
-      isLoading: false,
-      error: null
     }
 
     this.setCurrentMessage = this.setCurrentMessage.bind(this);
@@ -37,14 +35,16 @@ export default class HomeScreen extends React.Component {
 
  async componentDidMount(){
 
-  const user = JSON.parse( await AsyncStorage.getItem('@UserStore:info'));
-  const messageList = await  RequestHandler.fetchMessages(user.mail,0)//TODO: set timeStamp
-  this.setState({messageList})
+  let user = JSON.parse( await AsyncStorage.getItem('@UserStore:info'));
+  let  messageList = await  RequestHandler.fetchMessages(user.mail,0)//TODO: set timeStamp
+  this.setState({messageList: messageList})
   }
 
   _updateList = async () => {
-    console.log("in refetch")
-    return await this.props.allTasksQuery.refetch();
+    console.log("on refresh")
+    let user = JSON.parse( await AsyncStorage.getItem('@UserStore:info'));
+    let  messageList = await  RequestHandler.fetchMessages(user.mail,0);//TODO: set timeStamp
+    return messageList;
   }
   setCurrentMessage(message) {
 
@@ -74,7 +74,7 @@ export default class HomeScreen extends React.Component {
 
     if(this.state.messageList.length>0){
       return (
-          <MessageList mesgList={this.state.messageList} onItemPress={this.setCurrentMessage}/>
+          <MessageList messageList={this.state.messageList} onItemPress={this.setCurrentMessage} onRefresh={this._updateList}/>
   
       );
       
@@ -107,4 +107,3 @@ const styles = StyleSheet.create({
 
 
 
-const mesgList = require('./deleteME.json')

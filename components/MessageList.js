@@ -21,13 +21,13 @@ export default class MessageList extends React.Component {
 }
 
   componentDidMount() {
-      this.setState({messageList: this.props.mesgList})
+      this.setState({messageList: this.props.messageList})
   }
   handleRefresh(){
     this.setState({refreshing: true},
     async ()=>{
-    await this.props.updateList();   
-    this.setState({refreshing: false})})
+    let messageList = await this.props.onRefresh();   
+    this.setState({refreshing: false, messageList: messageList})})
   
   }
   
@@ -46,8 +46,8 @@ export default class MessageList extends React.Component {
       renderItem={({item}) => <MessageItem message={item} onPress={this.props.onItemPress} />}
       keyExtractor={(item, index)=>index}
       style={{flex:1}}
-     // refreshing={this.state.refreshing}
-      //onRefresh={this.handleRefresh}
+      refreshing={this.state.refreshing}
+      onRefresh={this.handleRefresh}
     />
 
       </View>

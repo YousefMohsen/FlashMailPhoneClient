@@ -43,9 +43,9 @@ console.log("from message content",message)
     </Left>
       </Header>
       <Content >
-        <Card  style={{flex: 1}}>
+        <Card >
    
-          <CardItem >
+          <CardItem  >
             <Body >
             <Text style={styles.title}>{message.title}</Text>
               <Text style={styles.messageContent}>
@@ -92,15 +92,13 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     textAlign: 'center',
-    
+    alignItems: 'center',
     fontSize: 25,
     paddingTop: 15,
     paddingBottom: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.secondaryColor,
+    borderBottomWidth: 2,
+    borderColor: Colors.primaryColor,
     color: Colors.focusedColor,
-    
-
     
     
   },

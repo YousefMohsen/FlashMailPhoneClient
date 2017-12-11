@@ -11,7 +11,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 
 export default TabNavigator(
   {
-    Home: {
+    Inbox: {
       screen: HomeScreen,
     },
     Links: {
@@ -27,7 +27,7 @@ export default TabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
-          case 'Home':
+          case 'Inbox':
             iconName = 'md-chatboxes';
             break;
           case 'Links':
