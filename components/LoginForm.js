@@ -1,11 +1,10 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
 import { Container, Header, Content, Button, Icon ,Text } from 'native-base';
-
 import { ExpoLinksView } from '@expo/samples';
 import RequestHandler from '../data/RequestHandler'
 import Colors from '../styles/Colors'
-
+import PushTokenGenerator from '../data/PushTokenGenerator'
 export default class LoginForm extends React.Component {
 
   constructor(props) {
@@ -13,7 +12,7 @@ export default class LoginForm extends React.Component {
 
     this.state = {
 
-      mail: "thiago@mail.dk",
+      mail: "Thiago@mail.dk",
 
     }
     this._saveUserInfoLocally = this._saveUserInfoLocally.bind(this);
@@ -21,7 +20,7 @@ export default class LoginForm extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(this._handleSignIn, 1000)//TODO: deleteME
+    //setTimeout(this._handleSignIn, 1000)//TODO: deleteME
   }
 
   _handleMailChange(input) {
@@ -34,12 +33,14 @@ export default class LoginForm extends React.Component {
   _handleSignIn = async() =>{
  
  const  mail  = this.state.mail;
+ const pushToken = await PushTokenGenerator.registerForPushNotificationsAsync();
+ console.log("pushToken",pushToken)
  try{
-    let user = await  RequestHandler.handleSignIn(mail);
+    let user = await  RequestHandler.handleSignIn(mail,pushToken);
     this._saveUserInfoLocally(user);
 //show content if server comunication is made succefully
     if(user){this.props.showAppContent();} 
-    else{throw error;}
+    else{throw 'No user found';}
     console.log("user",user)
     
  }catch(er){

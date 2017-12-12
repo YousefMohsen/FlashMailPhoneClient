@@ -20,7 +20,7 @@ const api = "https://b1a9c65d.ngrok.io"
  * TODO: improve error handling
  */
      handleSignIn = async(mail,token)=>{//returns axios promise. 
-        let endpoint = api+'/student/login'+"/"+mail+"/"+"newToken";
+        let endpoint = api+'/student/login'+"/"+mail+"/"+token;
         console.log(endpoint)
        try{
 
