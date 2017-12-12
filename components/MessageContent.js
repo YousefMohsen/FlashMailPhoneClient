@@ -111,6 +111,3 @@ const styles = StyleSheet.create({
 });
 
 
-/*
-      <TaskList/>
-*/

@@ -1,5 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Button, Text, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
+import { ScrollView, StyleSheet, View, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
+import { Container, Header, Content, Button, Icon ,Text } from 'native-base';
+
 import { ExpoLinksView } from '@expo/samples';
 import RequestHandler from '../data/RequestHandler'
 import Colors from '../styles/Colors'
@@ -19,7 +21,7 @@ export default class LoginForm extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(this._handleSignIn, 1000)//TODO: deleteME
+   // setTimeout(this._handleSignIn, 1000)//TODO: deleteME
   }
 
   _handleMailChange(input) {
@@ -69,11 +71,16 @@ console.log(er)
           value={this.state.mail}
           style={styles.textFieldShort} />
 
-       
+          <View style={styles.btnWrapper} >
+          
+          <Button iconLeft full style={{backgroundColor:Colors.secondaryColor}} onPress={this._handleSignIn}>
+          <Icon name='log-out' />
+          <Text>Log in</Text>
+        </Button>
+        </View>
+        
 
-        <TouchableOpacity onPress={this._handleSignIn.bind(this)} style={styles.btnWrapper} >
-          <Text style={styles.loginButton}>Log ind</Text>
-        </TouchableOpacity>
+     
 
       </View>
     );
@@ -113,11 +120,7 @@ const styles = StyleSheet.create({
     marginRight:40,
     marginLeft:40,
     marginTop:30,
-    paddingTop:20,
-    paddingBottom:20,
     backgroundColor: Colors.secondaryColor,
-    borderRadius:10,
-    borderWidth: 1,
     width: '70%'
     
   }
@@ -128,7 +131,3 @@ const styles = StyleSheet.create({
 
 });
 
-
-/*
-      <TaskList/>
-*/

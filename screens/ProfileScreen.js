@@ -2,7 +2,7 @@ import React from 'react';
 import { ExpoConfigView } from '@expo/samples';
 import { ScrollView, StyleSheet, View, Button, Text, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
 import Colors from '../styles/Colors'
-
+import StudentInfo from '../components/StudentInfo'
 export default class ProfileScreen extends React.Component {
   static navigationOptions = {
     title: 'Profile',
@@ -16,7 +16,7 @@ export default class ProfileScreen extends React.Component {
       userDetails:{},
     }
     this._getUserDetails = this._getUserDetails.bind(this);
-    
+    this.handleSignOut = this.handleSignOut.bind(this);
     }
     componentDidMount(){
       this._getUserDetails();
@@ -30,18 +30,24 @@ export default class ProfileScreen extends React.Component {
 
   }
 
+  handleSignOut(){
+    console.log("in handle sign out")
+    AsyncStorage.clear();
+    this.props.navigation.navigate('Login');
+    
+  }
+
+
   render() {
     let userDetails = this.state.userDetails;
     if(userDetails){
       return(
         <View style={styles.container}>
-        <Text>{userDetails.name}</Text>
+<StudentInfo user={userDetails} handleSignOut={this.handleSignOut}/>
         </View>
       )
     }
-    /* Go ahead and delete ExpoConfigView and replace it with your
-     * content, we just wanted to give you a quick view of your config */
-    return <ExpoConfigView />;
+    this.handleSignOut();// if no user provided => sign out
   }
 }
 
@@ -49,7 +55,6 @@ export default class ProfileScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
     backgroundColor: Colors.primaryColor,
   },
 
