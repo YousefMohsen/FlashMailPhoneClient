@@ -39,13 +39,11 @@ console.log("from message content",message)
       <Button iconLeft light onPress={()=>this.props.goBack()}>
       <Icon name='arrow-back' />
       <Text>Back</Text>
-
     </Button>
     </Left>
-      </Header>
+     </Header>
       <Content >
         <Card >
-   
           <CardItem  >
             <Body >
             <Text style={styles.title}>{message.title}</Text>

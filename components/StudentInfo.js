@@ -1,8 +1,9 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
+import { ScrollView, StyleSheet,  View, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
 import RequestHandler from '../data/RequestHandler'
 import Colors from '../styles/Colors'
 import { Container, Header, Content, Button, List, ListItem, Left, Body, Right, Thumbnail, Text, Item, Input, Icon  } from 'native-base';
+const photoPlaceholder = "https://s3.eu-central-1.amazonaws.com/elillatestbucket/user+(1).png";
 
 export default class StudentInfo extends React.Component {
 
@@ -13,7 +14,7 @@ export default class StudentInfo extends React.Component {
 
 
     }
-    this.handleSignOut = this.handleSignOut.bind(this)
+    this.handleSignOut = this.handleSignOut.bind(this);
 
   }
 
@@ -42,7 +43,8 @@ export default class StudentInfo extends React.Component {
 
   render() {
       let user = this.props.user;
-    
+        let imageUrl = user.imgUrl?  user.imgUrl : photoPlaceholder;
+        console.log(imageUrl)
     return (
         <View style={styles.container}>
         <Container>
@@ -51,7 +53,7 @@ export default class StudentInfo extends React.Component {
         </Header>
         <Content>
         <Item style={styles.thumbnailWrapper}>
-        <Thumbnail large source={{uri: user.imgUrl}} />
+        <Thumbnail large source={{uri: imageUrl }} />
         </Item>
           <Item>
             <Icon active name='person' />
@@ -96,9 +98,8 @@ const styles = StyleSheet.create({
     justifyContent:'center',
      alignItems:'center',
      flex:1,
-     marginBottom: 20,
      marginTop: 20,
-     paddingBottom: 3,
+     paddingBottom: 25,
 
   },
 

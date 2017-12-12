@@ -14,9 +14,7 @@ export default TabNavigator(
     Inbox: {
       screen: HomeScreen,
     },
-    Links: {
-      screen: LinksScreen,
-    },
+ 
     Profile: {
       screen: ProfileScreen,
     },
@@ -54,7 +52,7 @@ export default TabNavigator(
         paddingBottom: 2,
         activeBackgroundColor: "#EFEFEF",
         inactiveBackgroundColor: '#EFEFEF',
-        activeTintColor: '#ffffff',
+        activeTintColor: Colors.primaryColor,
         inactiveTintColor: "green",
         showIcon: true,
       }

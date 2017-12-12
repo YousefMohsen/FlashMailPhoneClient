@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
-import { Container, Header, Content, Button, Icon ,Text } from 'native-base';
+import { Container, Header, Content, Button, Icon ,Text, Item, Input, Label } from 'native-base';
 import { ExpoLinksView } from '@expo/samples';
 import RequestHandler from '../data/RequestHandler'
 import Colors from '../styles/Colors'
@@ -12,7 +12,7 @@ export default class LoginForm extends React.Component {
 
     this.state = {
 
-      mail: "Thiago@mail.dk",
+      mail: "thiago@mail.dk",
 
     }
     this._saveUserInfoLocally = this._saveUserInfoLocally.bind(this);
@@ -20,7 +20,7 @@ export default class LoginForm extends React.Component {
   }
 
   componentDidMount() {
-    //setTimeout(this._handleSignIn, 1000)//TODO: deleteME
+    this._handleSignIn()//TODO: deleteME
   }
 
   _handleMailChange(input) {
@@ -66,14 +66,21 @@ console.log(er)
 
 
 
-        <TextInput //mail
-          onChangeText={this._handleMailChange.bind(this)}
-          placeholder="Indtast din email"
-          value={this.state.mail}
-          style={styles.textFieldShort} />
-
+     
+        
           <View style={styles.btnWrapper} >
+          <Item  >
           
+          <Input 
+          placeholder="Type your email"
+          value={this.state.mail}
+          onChangeText={this._handleMailChange.bind(this)}
+          style={{color:Colors.secondaryColor}}
+          />
+        </Item>
+          </View>
+          <View style={styles.btnWrapper} >
+        
           <Button iconLeft full style={{backgroundColor:Colors.secondaryColor}} onPress={this._handleSignIn}>
           <Icon name='log-out' />
           <Text>Log in</Text>
@@ -95,6 +102,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primaryColor,
     justifyContent: 'center',
     alignItems: 'center',
+
   },
   textFieldShort: {
     borderBottomWidth: 1,
@@ -121,7 +129,7 @@ const styles = StyleSheet.create({
     marginRight:40,
     marginLeft:40,
     marginTop:30,
-    backgroundColor: Colors.secondaryColor,
+    backgroundColor: 'white',
     width: '70%'
     
   }
@@ -131,4 +139,3 @@ const styles = StyleSheet.create({
 
 
 });
-

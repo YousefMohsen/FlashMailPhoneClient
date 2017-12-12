@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, StyleSheet, View, Button, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
 import RequestHandler from '../data/RequestHandler'
 import Colors from '../styles/Colors'
-import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text } from 'native-base';
+import { Container, Header, Content, List, ListItem, Item, Left, Body, Right, Thumbnail, Text } from 'native-base';
 import Moment from 'moment';
 
 export default class MessageItem extends React.Component {
@@ -25,11 +25,9 @@ export default class MessageItem extends React.Component {
     
 
     formatDate(date){
-        return  Moment(date).format('Do MMMM YYYY') +'\n' + Moment(date).format('HH:mm')
+        return  Moment(date).format('Do MMMM YYYY') +'\n'
     }
-    sliceMessage(message){
-        return message.slice(0,35)+"..."
-    }
+ 
 
 
   render() {
@@ -37,9 +35,9 @@ export default class MessageItem extends React.Component {
     return (
        <View style={styles.container} >
 
-          <ListItem avatar style={styles.listItem}  onPress={()=>this.handlePress(message)}>
+          <ListItem avatar  onPress={()=>this.handlePress(message)}>
             <Left>
-              <Thumbnail source={{ uri: message.sender.imgUrl }} />
+              <Thumbnail small source={{ uri: message.sender.imgUrl }} />
             </Left>
             <Body>
               <Text>{message.sender.name}</Text>
@@ -58,14 +56,16 @@ export default class MessageItem extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center', 
-    alignItems: 'center' 
 
   },
   listItem: {
-
-    width: '100%'
-
+    backgroundColor: 'white',
+    flex: 1,
+    marginBottom: 2,
+    padding: 2,
+    paddingTop: 5,
+    paddingBottom: 5
+    
 
 
   },
