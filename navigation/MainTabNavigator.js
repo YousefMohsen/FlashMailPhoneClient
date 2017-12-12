@@ -2,11 +2,8 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { TabNavigator, TabBarBottom } from 'react-navigation';
-
 import Colors from '../styles/Colors'
-
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
 export default TabNavigator(
@@ -27,9 +24,6 @@ export default TabNavigator(
         switch (routeName) {
           case 'Inbox':
             iconName = 'md-chatboxes';
-            break;
-          case 'Links':
-            iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
             break;
           case 'Profile':
             iconName = 'md-person';

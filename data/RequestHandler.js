@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 
-const api = "https://b1a9c65d.ngrok.io"
+const api = "yousefmohsen.dk:4000"
  class RequestHandler  {
 
     constructor(){
