@@ -21,7 +21,7 @@ export default class LoginForm extends React.Component {
   }
 
   componentDidMount() {
-   // setTimeout(this._handleSignIn, 1000)//TODO: deleteME
+    setTimeout(this._handleSignIn, 1000)//TODO: deleteME
   }
 
   _handleMailChange(input) {

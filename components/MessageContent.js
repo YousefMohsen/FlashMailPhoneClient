@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Dimensions, AsyncStorage, StyleSheet, Image } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
+import Moment from 'moment';
 
 import RequestHandler from '../data/RequestHandler'
 import Colors from '../styles/Colors'
@@ -21,7 +22,7 @@ export default class MessageContent extends React.Component {
   }
 
   formatDate(date){
-    return  date.slice(3,10)+"  "+date.slice(11,16);
+    return  Moment(date).format('Do MMMM YYYY') +'\n' + Moment(date).format('HH:mm')
 }
 
 

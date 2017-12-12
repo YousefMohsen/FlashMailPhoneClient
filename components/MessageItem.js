@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, View, Button, TextInput, Platform, TouchableOpa
 import RequestHandler from '../data/RequestHandler'
 import Colors from '../styles/Colors'
 import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text } from 'native-base';
+import Moment from 'moment';
 
 export default class MessageItem extends React.Component {
 
@@ -24,7 +25,7 @@ export default class MessageItem extends React.Component {
     
 
     formatDate(date){
-        return  date.slice(3,10)+"  "+date.slice(11,16);
+        return  Moment(date).format('Do MMMM YYYY') +'\n' + Moment(date).format('HH:mm')
     }
     sliceMessage(message){
         return message.slice(0,35)+"..."
@@ -42,7 +43,7 @@ export default class MessageItem extends React.Component {
             </Left>
             <Body>
               <Text>{message.sender.name}</Text>
-              <Text note numberOfLines={2}>{this.sliceMessage(message.msg)}</Text>
+              <Text note numberOfLines={3}>{message.msg}</Text>
             </Body>
             <Right>
               <Text note>{this.formatDate(message.dateSent)}</Text>
