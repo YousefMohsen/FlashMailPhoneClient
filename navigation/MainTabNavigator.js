@@ -5,7 +5,10 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Colors from '../styles/Colors'
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-
+/**
+ * Main tabbed navigator is shown only when the user is logged in
+ * Define new screens inside TabNavigator function
+ */
 export default TabNavigator(
   {
     Inbox: {

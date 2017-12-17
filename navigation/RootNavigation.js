@@ -5,6 +5,9 @@ import LoginScreen from '../screens/LoginScreen';
 import MainTabNavigator from './MainTabNavigator';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
+/**
+ * RootNavigator that connects Login screen with the main tabbed navigator
+ */
 const RootStackNavigator = StackNavigator(
   {
     Login: {
