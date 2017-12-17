@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, FlatList, View, Button, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
-import {Container, Header, Content, List, Body }  from 'native-base';
+import {Container,Title, Header, Content, List, Body }  from 'native-base';
 import RequestHandler from '../data/RequestHandler'
 import Colors from '../styles/Colors'
 import MessageItem from './MessageItem'
@@ -37,8 +37,11 @@ export default class MessageList extends React.Component {
 
     return (
       <View style={styles.container}>
-      <Header>
-      <Text style={styles.header}>Inbox</Text>
+      <Header style={{backgroundColor: Colors.grey, paddingBottom:20}}>
+
+      <Body>
+      <Title style={styles.header}>Inbox</Title>
+      </Body>
       </Header>
       <FlatList
       data={this.state.messageList}
@@ -76,9 +79,9 @@ const styles = StyleSheet.create({
 
   },
   header: {
-    fontSize: 18,
+    fontSize: 25,
     color: Colors.secondaryColor,
-    paddingTop:20
+    paddingTop:20,
 
     
     

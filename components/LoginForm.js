@@ -12,7 +12,7 @@ export default class LoginForm extends React.Component {
 
     this.state = {
 
-      mail: "thiago@mail.dk",
+      mail: "",
 
     }
     this._saveUserInfoLocally = this._saveUserInfoLocally.bind(this);
@@ -20,7 +20,7 @@ export default class LoginForm extends React.Component {
   }
 
   componentDidMount() {
-    this._handleSignIn()//TODO: deleteME
+  // this._handleSignIn()//TODO: deleteME
   }
 
   _handleMailChange(input) {

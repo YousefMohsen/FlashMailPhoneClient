@@ -1,8 +1,8 @@
 import React from 'react';
-import { ScrollView, StyleSheet,  View, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
+import { ScrollView, StyleSheet  , View, TextInput, Platform, TouchableOpacity, Dimensions, AsyncStorage } from 'react-native';
 import RequestHandler from '../data/RequestHandler'
 import Colors from '../styles/Colors'
-import { Container, Header, Content, Button, List, ListItem, Left, Body, Right, Thumbnail, Text, Item, Input, Icon  } from 'native-base';
+import { Container, Header, Content, Title, Button, List, ListItem, Left, Body, Right, Thumbnail, Text, Item, Input, Icon  } from 'native-base';
 const photoPlaceholder = "https://s3.eu-central-1.amazonaws.com/elillatestbucket/user+(1).png";
 
 export default class StudentInfo extends React.Component {
@@ -48,9 +48,12 @@ export default class StudentInfo extends React.Component {
     return (
         <View style={styles.container}>
         <Container>
-        <Header>
-        <Text style={styles.header}>Profile</Text>
-        </Header>
+        <Header style={{backgroundColor: Colors.grey, paddingBottom:20}}>
+        
+              <Body>
+              <Title style={styles.header}>Profile</Title>
+              </Body>
+              </Header>
         <Content>
         <Item style={styles.thumbnailWrapper}>
         <Thumbnail large source={{uri: imageUrl }} />
@@ -104,10 +107,9 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    fontSize: 18,
+    fontSize: 25,
     color: Colors.secondaryColor,
     paddingTop:20,
-
     
     
   },

@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "lektappphoneclient",
+    "name": "flashmailphoneclient",
     "description": "No description",
-    "slug": "lektappphoneclient",
+    "slug": "flashmailphoneclient",
     "privacy": "public",
     "sdkVersion": "23.0.0",
     "version": "1.0.0",
